@@ -346,6 +346,7 @@ export default function Home() {
             />
           </svg>
         </button>
+        <p className="mt-2 text-sm text-gray-500">計算ボタンを押すと、下記に計算結果が表示されます</p>
       </div>
 
       {results && (
