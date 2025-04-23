@@ -352,19 +352,35 @@ export default function Home() {
         <div className="bg-gray-100 p-6 mt-6 rounded shadow space-y-4">
           <h2 className="text-xl font-bold mb-4">計算結果</h2>
 
+          {/* 新規追加：主要評価額の表示 */}
+          <div className="grid grid-cols-2 gap-6 mb-8">
+            <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500">
+              <h3 className="text-lg font-semibold text-gray-700 mb-2">相続税評価額としての評価額合計</h3>
+              <p className="text-2xl font-bold text-blue-600">
+                {results.remainingAssetsTotal.toLocaleString()} 円
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500">
+              <h3 className="text-lg font-semibold text-gray-700 mb-2">配偶者居住権として引かれる価額</h3>
+              <p className="text-2xl font-bold text-purple-600">
+                {results.spouseRightTotal.toLocaleString()} 円
+              </p>
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-4">
             <div className="bg-white p-4 rounded shadow">
-              <h3 className="font-semibold text-lg mb-2">配偶者居住権の評価</h3>
-              <p>建物：{(results.buildingRight || 0).toLocaleString()} 円</p>
-              <p>敷地利用権：{(results.landUse || 0).toLocaleString()} 円</p>
-              <p className="font-semibold mt-2">配偶者居住権合計：{(results.spouseRightTotal || 0).toLocaleString()} 円</p>
-            </div>
-
-            <div className="bg-white p-4 rounded shadow">
-              <h3 className="font-semibold text-lg mb-2">残余資産の評価</h3>
+              <h3 className="font-semibold text-lg mb-2">配偶者居住権を控除した残余資産の評価</h3>
               <p>設定建物：{(results.settingBuilding || 0).toLocaleString()} 円</p>
               <p>設定敷地（所有権）：{(results.landOwner || 0).toLocaleString()} 円</p>
               <p className="font-semibold mt-2">残余資産合計：{(results.remainingAssetsTotal || 0).toLocaleString()} 円</p>
+            </div>
+
+            <div className="bg-white p-4 rounded shadow">
+              <h3 className="font-semibold text-lg mb-2">配偶者居住権に係る建物および敷地利用権の評価</h3>
+              <p>建物：{(results.buildingRight || 0).toLocaleString()} 円</p>
+              <p>敷地利用権：{(results.landUse || 0).toLocaleString()} 円</p>
+              <p className="font-semibold mt-2">配偶者居住権合計：{(results.spouseRightTotal || 0).toLocaleString()} 円</p>
             </div>
 
             <div className="bg-white p-4 rounded shadow col-span-2">
