@@ -92,6 +92,9 @@ export default function Home() {
         results: result
       };
 
+      console.log('Attempting to log data:', logData);
+      console.log('Using URL:', LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL);
+
       try {
         const response = await fetch(LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL, {
           method: 'POST',
@@ -101,12 +104,20 @@ export default function Home() {
           body: JSON.stringify(logData),
         });
 
+        console.log('Response status:', response.status);
+        const responseData = await response.json();
+        console.log('Response data:', responseData);
+
         if (!response.ok) {
-          console.error('Failed to log calculation data');
+          console.error('Failed to log calculation data:', response.statusText);
         }
       } catch (error) {
         console.error('Error logging calculation data:', error);
       }
+    } else {
+      console.log('Logging is disabled or URL is not configured');
+      console.log('ENABLED:', LOGGING_CONFIG.ENABLED);
+      console.log('URL:', LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL);
     }
   };
 
