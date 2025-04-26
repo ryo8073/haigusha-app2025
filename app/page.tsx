@@ -103,22 +103,10 @@ export default function Home() {
       console.log('Using URL:', LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL);
 
       try {
-        // First, make an OPTIONS request to check CORS
-        const optionsResponse = await fetch(`${LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL}?cors=true`, {
-          method: 'OPTIONS',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (!optionsResponse.ok) {
-          console.error('CORS preflight failed');
-          return;
-        }
-
-        // Then make the POST request
+        // Make the POST request directly with CORS mode
         const response = await fetch(LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL, {
           method: 'POST',
+          mode: 'cors',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -126,14 +114,25 @@ export default function Home() {
         });
 
         console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('Failed to log calculation data:', {
+            status: response.status,
+            statusText: response.statusText,
+            error: errorText
+          });
+          return;
+        }
+
         const responseData = await response.json();
         console.log('Response data:', responseData);
 
-        if (!response.ok) {
-          console.error('Failed to log calculation data:', response.statusText);
-        }
       } catch (error) {
-        console.error('Error logging calculation data:', error);
+        console.error('Error logging calculation data:', {
+          error: error instanceof Error ? error.message : 'Unknown error',
+          stack: error instanceof Error ? error.stack : undefined
+        });
       }
     } else {
       console.log('Logging is disabled or URL is not configured');
