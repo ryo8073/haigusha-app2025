@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { calculateResults, formatNumberWithCommas, parseFormattedNumber } from '@/lib/utils';
+import { LOGGING_CONFIG } from '@/config/logging';
 
 export default function Home() {
   const [form, setForm] = useState({
@@ -80,9 +81,33 @@ export default function Home() {
     }
   };
 
-  const handleCalculate = () => {
+  const handleCalculate = async () => {
     const result = calculateResults(form);
     setResults(result);
+
+    if (LOGGING_CONFIG.ENABLED && LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL) {
+      // Prepare data for logging
+      const logData = {
+        ...form,
+        results: result
+      };
+
+      try {
+        const response = await fetch(LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(logData),
+        });
+
+        if (!response.ok) {
+          console.error('Failed to log calculation data');
+        }
+      } catch (error) {
+        console.error('Error logging calculation data:', error);
+      }
+    }
   };
 
   return (
