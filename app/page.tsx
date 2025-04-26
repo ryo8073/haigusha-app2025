@@ -1,11 +1,18 @@
 // app/page.tsx - 再構成された配偶者居住権計算アプリ（結果表示強化）
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { calculateResults, formatNumberWithCommas, parseFormattedNumber } from '@/lib/utils';
 import { LOGGING_CONFIG } from '@/config/logging';
 
 export default function Home() {
+  // Add environment variable verification
+  useEffect(() => {
+    console.log('Environment Variables Check:');
+    console.log('Logging Enabled:', LOGGING_CONFIG.ENABLED);
+    console.log('GAS URL:', LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL);
+  }, []);
+
   const [form, setForm] = useState({
     inheritanceDate: '',
     divisionDate: '',
