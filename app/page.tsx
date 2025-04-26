@@ -103,6 +103,20 @@ export default function Home() {
       console.log('Using URL:', LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL);
 
       try {
+        // First, make an OPTIONS request to check CORS
+        const optionsResponse = await fetch(LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL, {
+          method: 'OPTIONS',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (!optionsResponse.ok) {
+          console.error('CORS preflight failed');
+          return;
+        }
+
+        // Then make the POST request
         const response = await fetch(LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL, {
           method: 'POST',
           headers: {
