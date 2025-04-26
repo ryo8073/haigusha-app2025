@@ -103,30 +103,20 @@ export default function Home() {
       console.log('Using URL:', LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL);
 
       try {
-        // Make the POST request directly with CORS mode
+        // Make the POST request with no-cors mode
         const response = await fetch(LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL, {
           method: 'POST',
-          mode: 'cors',
+          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json',
           },
           body: JSON.stringify(logData),
         });
 
-        console.log('Response status:', response.status);
-        
-        if (!response.ok) {
-          const errorText = await response.text();
-          console.error('Failed to log calculation data:', {
-            status: response.status,
-            statusText: response.statusText,
-            error: errorText
-          });
-          return;
-        }
-
-        const responseData = await response.json();
-        console.log('Response data:', responseData);
+        // Since we're using no-cors mode, we won't get a proper response
+        // but the request should still go through
+        console.log('Request sent successfully');
 
       } catch (error) {
         console.error('Error logging calculation data:', {
