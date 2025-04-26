@@ -104,7 +104,7 @@ export default function Home() {
 
       try {
         // First, make an OPTIONS request to check CORS
-        const optionsResponse = await fetch(LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL, {
+        const optionsResponse = await fetch(`${LOGGING_CONFIG.GOOGLE_APPS_SCRIPT_URL}?cors=true`, {
           method: 'OPTIONS',
           headers: {
             'Content-Type': 'application/json',
