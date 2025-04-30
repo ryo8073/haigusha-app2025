@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { calculateResults, formatNumberWithCommas, parseFormattedNumber } from '@/lib/utils';
+import { calculateResults, formatNumberWithCommas, parseFormattedNumber, getUsefulLife, getLifeExpectancy } from '@/lib/utils';
 import { LOGGING_CONFIG } from '@/config/logging';
 
 export default function Home() {
@@ -131,6 +131,21 @@ export default function Home() {
     }
   };
 
+  // 追加: 中間計算値
+  const usefulLife = getUsefulLife(form.structure);
+  const residentialArea = form.buildingArea && form.rentalArea ? form.buildingArea - form.rentalArea : '';
+  const landValue = form.landArea && form.roadPrice && form.landCorrection ? Math.round(form.landArea * form.roadPrice * (form.landCorrection / 100)) : '';
+  // 年齢・平均余命
+  const spouseAge = (form.spouseBirthday && form.divisionDate) ? (() => {
+    const birth = new Date(form.spouseBirthday);
+    const ref = new Date(form.divisionDate);
+    let age = ref.getFullYear() - birth.getFullYear();
+    const m = ref.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && ref.getDate() < birth.getDate())) age--;
+    return Math.floor(age);
+  })() : '';
+  const spouseLife = (spouseAge !== '' && form.spouseGender) ? getLifeExpectancy(Number(spouseAge), form.spouseGender) : '';
+
   return (
     <main className="min-h-screen p-8 max-w-3xl mx-auto space-y-8 bg-gray-50">
       <h1 className="text-2xl font-bold text-gray-800">配偶者居住権評価計算アプリ</h1>
@@ -179,6 +194,9 @@ export default function Home() {
                 <option value="木造（在来工法）">木造（在来工法）</option>
                 <option value="木骨モルタル造">木骨モルタル造</option>
               </select>
+              {form.structure && (
+                <div className="text-sm text-green-700 mt-1">耐用年数: {usefulLife ? `${usefulLife}年` : '―'}</div>
+              )}
             </div>
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">新築年月日</label>
@@ -205,6 +223,9 @@ export default function Home() {
                 pattern="^[0-9,]*\.?[0-9]{0,2}$"
                 className="border p-2 rounded w-full focus:ring-2 focus:ring-green-200 focus:border-green-300"
               />
+              {(form.buildingArea && form.rentalArea !== undefined && form.rentalArea !== null) && (
+                <div className="text-sm text-green-700 mt-1">居住用面積: {residentialArea !== '' ? `${residentialArea}㎡` : '―'}</div>
+              )}
             </div>
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">賃貸部分面積 (㎡)</label>
@@ -309,6 +330,9 @@ export default function Home() {
                 step="0.01"
                 className="border p-2 rounded w-full focus:ring-2 focus:ring-yellow-200 focus:border-yellow-300"
               />
+              {(form.landArea && form.roadPrice && form.landCorrection) && (
+                <div className="text-sm text-yellow-700 mt-1">路線価評価額: {landValue !== '' ? `${formatNumberWithCommas(landValue)}円` : '―'}</div>
+              )}
             </div>
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">被相続人の土地持分割合 (%)</label>
@@ -333,6 +357,12 @@ export default function Home() {
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">生年月日</label>
               <input type="date" name="spouseBirthday" onChange={handleChange} className="border p-2 rounded w-full focus:ring-2 focus:ring-purple-200 focus:border-purple-300" />
+              {form.spouseBirthday && form.divisionDate && (
+                <div className="text-sm text-purple-700 mt-1">年齢: {spouseAge !== '' ? `${spouseAge}歳` : '―'}</div>
+              )}
+              {spouseAge !== '' && form.spouseGender && (
+                <div className="text-sm text-purple-700 mt-1">平均余命: {spouseLife !== '' ? `${spouseLife}年` : '―'}</div>
+              )}
             </div>
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">性別</label>
