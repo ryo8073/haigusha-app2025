@@ -430,16 +430,16 @@ export default function Home() {
           <h2 className="text-xl font-bold mb-4">計算結果</h2>
 
           {/* 新規追加：主要評価額の表示 */}
-          <div className="grid grid-cols-2 gap-6 mb-8">
-            <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">相続税評価額としての評価額合計</h3>
-              <p className="text-2xl font-bold text-blue-600">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border-l-4 border-blue-500 overflow-x-auto">
+              <h3 className="text-base md:text-lg font-semibold text-gray-700 mb-2">相続税評価額としての評価額合計</h3>
+              <p className="text-xl md:text-2xl font-bold text-blue-600 whitespace-nowrap">
                 {results.remainingAssetsTotal.toLocaleString()} 円
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">配偶者居住権として引かれる価額</h3>
-              <p className="text-2xl font-bold text-purple-600">
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border-l-4 border-purple-500 overflow-x-auto">
+              <h3 className="text-base md:text-lg font-semibold text-gray-700 mb-2">配偶者居住権として引かれる価額</h3>
+              <p className="text-xl md:text-2xl font-bold text-purple-600 whitespace-nowrap">
                 {results.spouseRightTotal.toLocaleString()} 円
               </p>
             </div>
