@@ -175,23 +175,11 @@ export default function Home() {
               <select name="structure" onChange={handleChange} className="bg-white border-2 border-green-300 focus:border-green-500 focus:ring-4 focus:ring-green-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none">
                 <option value="">建物構造を選択</option>
                 <option value="鉄骨鉄筋コンクリート造又は鉄筋コンクリート造">鉄骨鉄筋コンクリート造又は鉄筋コンクリート造</option>
-                <option value="鉄筋コンクリート造">鉄筋コンクリート造</option>
-                <option value="鉄骨鉄筋コンクリート造">鉄骨鉄筋コンクリート造</option>
                 <option value="れんが作り、石造またはブロック造">れんが作り、石造またはブロック造</option>
-                <option value="コンクリートブロック造">コンクリートブロック造</option>
                 <option value="金属造（骨格材の肉厚4mm超)">金属造（骨格材の肉厚4mm超)</option>
-                <option value="鉄骨造（重量鉄骨）">鉄骨造（重量鉄骨）</option>
                 <option value="金属造（骨格材の肉厚3mm超～4mm以下)">金属造（骨格材の肉厚3mm超～4mm以下)</option>
-                <option value="鉄骨造">鉄骨造</option>
                 <option value="金属造（骨格材の肉厚3mm以下)">金属造（骨格材の肉厚3mm以下)</option>
-                <option value="鉄骨造（軽量鉄骨）">鉄骨造（軽量鉄骨）</option>
                 <option value="木造又は合成樹脂造">木造又は合成樹脂造</option>
-                <option value="木造">木造</option>
-                <option value="木造（軸組工法）">木造（軸組工法）</option>
-                <option value="木造（枠組壁工法）">木造（枠組壁工法）</option>
-                <option value="木造（プレハブ）">木造（プレハブ）</option>
-                <option value="木造（ツーバイフォー）">木造（ツーバイフォー）</option>
-                <option value="木造（在来工法）">木造（在来工法）</option>
                 <option value="木骨モルタル造">木骨モルタル造</option>
               </select>
               {form.structure && (
@@ -448,8 +436,8 @@ export default function Home() {
               <h3 className="text-base font-semibold text-blue-700 mb-2 whitespace-nowrap">相続税評価額としての評価額合計</h3>
               <p className="text-2xl font-bold text-blue-600 break-words">{results.remainingAssetsTotal.toLocaleString()} 円</p>
               <div className="mt-3 w-full text-sm text-gray-700 space-y-1">
-                <div className="flex flex-row justify-between w-full"><span>相続税評価部分の建物の価額：</span><span>{(results.settingBuilding || 0).toLocaleString()} 円</span></div>
-                <div className="flex flex-row justify-between w-full"><span>相続税評価部分の土地の価額：</span><span>{(results.landOwner || 0).toLocaleString()} 円</span></div>
+                <div className="flex flex-row justify-between w-full"><span>居住建物の価額：</span><span>{(results.settingBuilding || 0).toLocaleString()} 円</span></div>
+                <div className="flex flex-row justify-between w-full"><span>居住建物の敷地の用に供される土地の価額：</span><span>{(results.landOwner || 0).toLocaleString()} 円</span></div>
               </div>
             </div>
             {/* 配偶者居住権控除額 */}
@@ -457,8 +445,8 @@ export default function Home() {
               <h3 className="text-base font-semibold text-purple-700 mb-2 whitespace-nowrap">配偶者居住権として引かれる価額</h3>
               <p className="text-2xl font-bold text-purple-600 break-words">{results.spouseRightTotal.toLocaleString()} 円</p>
               <div className="mt-3 w-full text-sm text-gray-700 space-y-1">
-                <div className="flex flex-row justify-between w-full"><span>配偶者居住権の建物部分の価額：</span><span>{(results.buildingRight || 0).toLocaleString()} 円</span></div>
-                <div className="flex flex-row justify-between w-full"><span>配偶者居住権の土地部分の価額：</span><span>{(results.landUse || 0).toLocaleString()} 円</span></div>
+                <div className="flex flex-row justify-between w-full"><span>配偶者居住権の価額：</span><span>{(results.buildingRight || 0).toLocaleString()} 円</span></div>
+                <div className="flex flex-row justify-between w-full"><span>敷地利用権の価額：</span><span>{(results.landUse || 0).toLocaleString()} 円</span></div>
               </div>
             </div>
             {/* 詳細情報 */}
