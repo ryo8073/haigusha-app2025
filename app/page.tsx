@@ -297,22 +297,29 @@ export default function Home() {
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">借地権割合 (%)</label>
               <div className="grid grid-cols-7 gap-3">
-                {[90, 80, 70, 60, 50, 40, 30].map((ratio) => (
+                {[
+                  { label: 'A90%', value: 90 },
+                  { label: 'B80%', value: 80 },
+                  { label: 'C70%', value: 70 },
+                  { label: 'D60%', value: 60 },
+                  { label: 'E50%', value: 50 },
+                  { label: 'F40%', value: 40 },
+                  { label: 'G30%', value: 30 },
+                ].map((item) => (
                   <button
-                    key={ratio}
+                    key={item.value}
                     type="button"
-                    aria-label={`借地権割合: ${ratio}%`}
-                    onClick={() => handleChange({ target: { name: 'leaseRatio', value: ratio } })}
+                    aria-label={`借地権割合: ${item.label}`}
+                    onClick={() => handleChange({ target: { name: 'leaseRatio', value: item.value } })}
                     className={`
                       relative px-4 py-3 rounded-xl transition-all duration-200 text-base font-semibold border-2
-                      ${form.leaseRatio === ratio
+                      ${form.leaseRatio == item.value
                         ? 'bg-yellow-100 border-yellow-500 shadow-lg scale-105 text-yellow-800'
                         : 'bg-white border-yellow-200 hover:bg-yellow-50 hover:border-yellow-400 text-gray-700'}
                       focus:outline-none focus:ring-4 focus:ring-yellow-200
                     `}
                   >
-                    <span>{ratio}</span>
-                    <span className="text-xs">%</span>
+                    <span>{item.label}</span>
                   </button>
                 ))}
               </div>
