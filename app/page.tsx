@@ -147,7 +147,7 @@ export default function Home() {
   const spouseLife = (spouseAge !== '' && form.spouseGender) ? getLifeExpectancy(Number(spouseAge), form.spouseGender) : '';
 
   return (
-    <main className="min-h-screen p-8 max-w-3xl mx-auto space-y-8 bg-gray-50">
+    <main className="min-h-screen p-4 sm:p-8 max-w-2xl md:max-w-3xl mx-auto space-y-10 bg-gradient-to-br from-gray-50 via-white to-gray-100">
       <h1 className="text-2xl font-bold text-gray-800">配偶者居住権評価計算アプリ</h1>
 
       <div className="space-y-6">
@@ -157,11 +157,11 @@ export default function Home() {
           <div className="space-y-4">
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">相続開始日（被相続人の死亡日）</label>
-              <input type="date" name="inheritanceDate" onChange={handleChange} className="border p-2 rounded w-full focus:ring-2 focus:ring-blue-200 focus:border-blue-300" />
+              <input type="date" name="inheritanceDate" onChange={handleChange} className="bg-white border-2 border-blue-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none" />
             </div>
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">遺産分割日（評価時点）</label>
-              <input type="date" name="divisionDate" onChange={handleChange} className="border p-2 rounded w-full focus:ring-2 focus:ring-blue-200 focus:border-blue-300" />
+              <input type="date" name="divisionDate" onChange={handleChange} className="bg-white border-2 border-blue-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none" />
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@ export default function Home() {
           <div className="space-y-4">
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">建物構造</label>
-              <select name="structure" onChange={handleChange} className="border p-2 rounded w-full focus:ring-2 focus:ring-green-200 focus:border-green-300">
+              <select name="structure" onChange={handleChange} className="bg-white border-2 border-green-300 focus:border-green-500 focus:ring-4 focus:ring-green-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none">
                 <option value="">建物構造を選択</option>
                 <option value="鉄骨鉄筋コンクリート造又は鉄筋コンクリート造">鉄骨鉄筋コンクリート造又は鉄筋コンクリート造</option>
                 <option value="鉄筋コンクリート造">鉄筋コンクリート造</option>
@@ -200,7 +200,7 @@ export default function Home() {
             </div>
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">新築年月日</label>
-              <input type="date" name="constructionDate" onChange={handleChange} className="border p-2 rounded w-full focus:ring-2 focus:ring-green-200 focus:border-green-300" />
+              <input type="date" name="constructionDate" onChange={handleChange} className="bg-white border-2 border-green-300 focus:border-green-500 focus:ring-4 focus:ring-green-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none" />
             </div>
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">建物固定資産税評価額 (円)</label>
@@ -209,7 +209,7 @@ export default function Home() {
                 name="buildingValue"
                 value={formatNumberWithCommas(displayValues.buildingValue)}
                 onChange={handleChange}
-                className="border p-2 rounded w-full focus:ring-2 focus:ring-green-200 focus:border-green-300"
+                className="bg-white border-2 border-green-300 focus:border-green-500 focus:ring-4 focus:ring-green-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none"
               />
             </div>
             <div className="space-y-2">
@@ -221,7 +221,7 @@ export default function Home() {
                 onChange={handleChange}
                 placeholder="0.00"
                 pattern="^[0-9,]*\.?[0-9]{0,2}$"
-                className="border p-2 rounded w-full focus:ring-2 focus:ring-green-200 focus:border-green-300"
+                className="bg-white border-2 border-green-300 focus:border-green-500 focus:ring-4 focus:ring-green-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none"
               />
               {(form.buildingArea && form.rentalArea !== undefined && form.rentalArea !== null) && (
                 <div className="text-sm text-green-700 mt-1">居住用面積: {residentialArea !== '' ? `${residentialArea}㎡` : '―'}</div>
@@ -236,7 +236,7 @@ export default function Home() {
                 onChange={handleChange}
                 placeholder="0.00"
                 pattern="^[0-9,]*\.?[0-9]{0,2}$"
-                className="border p-2 rounded w-full focus:ring-2 focus:ring-green-200 focus:border-green-300"
+                className="bg-white border-2 border-green-300 focus:border-green-500 focus:ring-4 focus:ring-green-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none"
               />
             </div>
             <div className="space-y-2">
@@ -249,7 +249,7 @@ export default function Home() {
                 min="0"
                 max="100"
                 step="0.1"
-                className="border p-2 rounded w-full focus:ring-2 focus:ring-green-200 focus:border-green-300"
+                className="bg-white border-2 border-green-300 focus:border-green-500 focus:ring-4 focus:ring-green-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none"
               />
             </div>
             <div className="space-y-2">
@@ -262,7 +262,7 @@ export default function Home() {
                 min="0"
                 max="100"
                 step="0.01"
-                className="border p-2 rounded w-full focus:ring-2 focus:ring-green-200 focus:border-green-300"
+                className="bg-white border-2 border-green-300 focus:border-green-500 focus:ring-4 focus:ring-green-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none"
               />
             </div>
           </div>
@@ -281,7 +281,7 @@ export default function Home() {
                 onChange={handleChange}
                 placeholder="0.00"
                 pattern="^[0-9,]*\.?[0-9]{0,2}$"
-                className="border p-2 rounded w-full focus:ring-2 focus:ring-yellow-200 focus:border-yellow-300"
+                className="bg-white border-2 border-yellow-300 focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none"
               />
             </div>
             <div className="space-y-2">
@@ -291,7 +291,7 @@ export default function Home() {
                 name="roadPrice"
                 value={formatNumberWithCommas(displayValues.roadPrice)}
                 onChange={handleChange}
-                className="border p-2 rounded w-full focus:ring-2 focus:ring-yellow-200 focus:border-yellow-300"
+                className="bg-white border-2 border-yellow-300 focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none"
               />
             </div>
             <div className="space-y-2">
@@ -301,17 +301,17 @@ export default function Home() {
                   <button
                     key={ratio}
                     type="button"
+                    aria-label={`借地権割合: ${ratio}%`}
                     onClick={() => handleChange({ target: { name: 'leaseRatio', value: ratio } })}
                     className={`
-                      relative p-3 rounded-lg transition-all duration-200
+                      relative px-4 py-3 rounded-xl transition-all duration-200 text-base font-semibold border-2
                       ${form.leaseRatio === ratio
-                        ? 'bg-yellow-500 text-white shadow-lg transform scale-105'
-                        : 'bg-white hover:bg-yellow-50 border border-yellow-200'}
-                      flex flex-col items-center justify-center
-                      focus:outline-none focus:ring-2 focus:ring-yellow-400
+                        ? 'bg-yellow-100 border-yellow-500 shadow-lg scale-105 text-yellow-800'
+                        : 'bg-white border-yellow-200 hover:bg-yellow-50 hover:border-yellow-400 text-gray-700'}
+                      focus:outline-none focus:ring-4 focus:ring-yellow-200
                     `}
                   >
-                    <span className="text-lg font-semibold">{ratio}</span>
+                    <span>{ratio}</span>
                     <span className="text-xs">%</span>
                   </button>
                 ))}
@@ -328,7 +328,7 @@ export default function Home() {
                 min="0"
                 max="120"
                 step="0.01"
-                className="border p-2 rounded w-full focus:ring-2 focus:ring-yellow-200 focus:border-yellow-300"
+                className="bg-white border-2 border-yellow-300 focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none"
               />
               {(form.landArea && form.roadPrice && form.landCorrection) && (
                 <div className="text-sm text-yellow-700 mt-1">路線価評価額: {landValue !== '' ? `${formatNumberWithCommas(landValue)}円` : '―'}</div>
@@ -344,7 +344,7 @@ export default function Home() {
                 min="0"
                 max="100"
                 step="0.01"
-                className="border p-2 rounded w-full focus:ring-2 focus:ring-yellow-200 focus:border-yellow-300"
+                className="bg-white border-2 border-yellow-300 focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none"
               />
             </div>
           </div>
@@ -356,7 +356,7 @@ export default function Home() {
           <div className="space-y-4">
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">生年月日</label>
-              <input type="date" name="spouseBirthday" onChange={handleChange} className="border p-2 rounded w-full focus:ring-2 focus:ring-purple-200 focus:border-purple-300" />
+              <input type="date" name="spouseBirthday" onChange={handleChange} className="bg-white border-2 border-purple-300 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 shadow-sm rounded-xl px-4 py-3 text-base placeholder-gray-400 transition-all w-full outline-none" />
               {form.spouseBirthday && form.divisionDate && (
                 <div className="text-sm text-purple-700 mt-1">年齢: {spouseAge !== '' ? `${spouseAge}歳` : '―'}</div>
               )}
@@ -374,17 +374,18 @@ export default function Home() {
                   <button
                     key={option.value}
                     type="button"
+                    aria-label={`配偶者の性別: ${option.label}`}
                     onClick={() => handleChange({ target: { name: 'spouseGender', value: option.value } })}
                     className={`
-                      relative p-4 rounded-lg transition-all duration-200
+                      relative px-6 py-4 rounded-xl transition-all duration-200 text-base font-semibold
+                      border-2
                       ${form.spouseGender === option.value
-                        ? 'bg-purple-500 text-white shadow-lg transform scale-105'
-                        : 'bg-white hover:bg-purple-50 border border-purple-200'}
-                      flex flex-col items-center justify-center
-                      focus:outline-none focus:ring-2 focus:ring-purple-400
+                        ? 'bg-purple-100 border-purple-500 shadow-lg scale-105 text-purple-800'
+                        : 'bg-white border-purple-200 hover:bg-purple-50 hover:border-purple-400 text-gray-700'}
+                      focus:outline-none focus:ring-4 focus:ring-purple-200
                     `}
                   >
-                    <span className="text-lg font-semibold">{option.label}</span>
+                    <span>{option.label}</span>
                   </button>
                 ))}
               </div>
@@ -425,65 +426,49 @@ export default function Home() {
         <p className="mt-2 text-sm text-gray-500">計算ボタンを押すと、下記に計算結果が表示されます</p>
       </div>
 
-      {results && (
-        <div className="bg-gray-100 p-6 mt-6 rounded shadow space-y-4">
-          <h2 className="text-xl font-bold mb-4">計算結果</h2>
-
-          {/* 新規追加：主要評価額の表示 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border-l-4 border-blue-500 overflow-x-auto">
-              <h3 className="text-base md:text-lg font-semibold text-gray-700 mb-2">相続税評価額としての評価額合計</h3>
-              <p className="text-xl md:text-2xl font-bold text-blue-600 whitespace-nowrap">
-                {results.remainingAssetsTotal.toLocaleString()} 円
-              </p>
+      {/* --- 計算結果エリア --- */}
+      <section aria-labelledby="result-title" className="mt-10">
+        <h2 id="result-title" className="text-xl font-bold mb-4">計算結果</h2>
+        {!results ? (
+          <div className="bg-gray-200/60 border-2 border-dashed border-gray-300 rounded-xl p-8 flex flex-col items-center justify-center min-h-[180px] text-gray-500 text-lg font-medium">
+            <span className="mb-2">ここに計算結果が表示されます</span>
+            <span className="text-sm text-gray-400">必要事項を入力し「計算する」を押してください</span>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
+              <h3 className="text-base font-semibold text-blue-700 mb-2">相続税評価額としての評価額合計</h3>
+              <p className="text-2xl font-bold text-blue-600">{results.remainingAssetsTotal.toLocaleString()} 円</p>
             </div>
-            <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border-l-4 border-purple-500 overflow-x-auto">
-              <h3 className="text-base md:text-lg font-semibold text-gray-700 mb-2">配偶者居住権として引かれる価額</h3>
-              <p className="text-xl md:text-2xl font-bold text-purple-600 whitespace-nowrap">
-                {results.spouseRightTotal.toLocaleString()} 円
-              </p>
+            <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500">
+              <h3 className="text-base font-semibold text-purple-700 mb-2">配偶者居住権として引かれる価額</h3>
+              <p className="text-2xl font-bold text-purple-600">{results.spouseRightTotal.toLocaleString()} 円</p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow col-span-2 mt-4">
+              <h3 className="font-semibold text-lg mb-2">詳細情報</h3>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700 text-sm">
+                <li>配偶者年齢：{results.spouseAge || 0} 歳</li>
+                <li>平均余命：{results.life || 0} 年</li>
+                <li>複利原価率：{results.pvf || 0}</li>
+                <li>経過年数：{results.elapsedYears || 0} 年</li>
+                <li>耐用年数：{results.usefulLife || 0} 年</li>
+                <li>居住面積：{(results.residentialArea || 0).toLocaleString()} ㎡</li>
+                <li>居住面積割合：{((results.residentialRatio || 0) * 100).toFixed(2)}%</li>
+                <li>賃貸面積割合：{((results.rentalAreaRatio || 0) * 100).toFixed(2)}%</li>
+                <li>賃貸入居率：{((results.rentalRatio || 0) * 100).toFixed(2)}%</li>
+                <li>建物評価額：{(results.buildingTaxValue || 0).toLocaleString()} 円</li>
+                <li>被相続人の建物持分割合：{form.buildingOwnershipRatio}%</li>
+                <li>土地評価額：{(results.landValue || 0).toLocaleString()} 円</li>
+                <li>被相続人の土地持分割合：{form.landOwnershipRatio}%</li>
+                {results.landReduction > 0 && (
+                  <li>土地評価減額：{(results.landReduction || 0).toLocaleString()} 円</li>
+                )}
+              </ul>
+              <div className="text-right font-semibold text-lg mt-4">総合計：{(results.total || 0).toLocaleString()} 円</div>
             </div>
           </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-white p-4 rounded shadow">
-              <h3 className="font-semibold text-lg mb-2">配偶者居住権を控除した残余資産の評価</h3>
-              <p>設定建物：{(results.settingBuilding || 0).toLocaleString()} 円</p>
-              <p>設定敷地（所有権）：{(results.landOwner || 0).toLocaleString()} 円</p>
-              <p className="font-semibold mt-2">残余資産合計：{(results.remainingAssetsTotal || 0).toLocaleString()} 円</p>
-            </div>
-
-            <div className="bg-white p-4 rounded shadow">
-              <h3 className="font-semibold text-lg mb-2">配偶者居住権に係る建物および敷地利用権の評価</h3>
-              <p>建物：{(results.buildingRight || 0).toLocaleString()} 円</p>
-              <p>敷地利用権：{(results.landUse || 0).toLocaleString()} 円</p>
-              <p className="font-semibold mt-2">配偶者居住権合計：{(results.spouseRightTotal || 0).toLocaleString()} 円</p>
-            </div>
-
-            <div className="bg-white p-4 rounded shadow col-span-2">
-              <h3 className="font-semibold text-lg mb-2">中間計算情報</h3>
-              <p>配偶者年齢：{results.spouseAge || 0} 歳（満年齢）</p>
-              <p>平均余命：{results.life || 0} 年</p>
-              <p>複利原価率：{results.pvf || 0}</p>
-              <p>経過年数：{results.elapsedYears || 0} 年</p>
-              <p>耐用年数：{results.usefulLife || 0} 年</p>
-              <p>居住面積：{(results.residentialArea || 0).toLocaleString()} ㎡</p>
-              <p>居住面積割合：{((results.residentialRatio || 0) * 100).toFixed(2)}%</p>
-              <p>賃貸面積割合：{((results.rentalAreaRatio || 0) * 100).toFixed(2)}%</p>
-              <p>賃貸入居率：{((results.rentalRatio || 0) * 100).toFixed(2)}%</p>
-              <p>建物評価額：{(results.buildingTaxValue || 0).toLocaleString()} 円</p>
-              <p>被相続人の建物持分割合：{form.buildingOwnershipRatio}%</p>
-              <p>土地評価額：{(results.landValue || 0).toLocaleString()} 円</p>
-              <p>被相続人の土地持分割合：{form.landOwnershipRatio}%</p>
-              {results.landReduction > 0 && (
-                <p>土地評価減額：{(results.landReduction || 0).toLocaleString()} 円</p>
-              )}
-            </div>
-          </div>
-
-          <div className="text-right font-semibold text-lg">総合計：{(results.total || 0).toLocaleString()} 円</div>
-        </div>
-      )}
+        )}
+      </section>
     </main>
   );
 }
