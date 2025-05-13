@@ -147,7 +147,7 @@ export default function Home() {
   const spouseLife = (spouseAge !== '' && form.spouseGender) ? getLifeExpectancy(Number(spouseAge), form.spouseGender) : '';
 
   // 詳細情報の下にデバッグ用計算過程表示
-  const showDebug = true;
+  const showDebug = false;
 
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl md:max-w-3xl mx-auto space-y-10 bg-gradient-to-br from-gray-50 via-white to-gray-100">
