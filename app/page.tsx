@@ -454,21 +454,6 @@ export default function Home() {
                 <div className="flex flex-row justify-between w-full"><span>配偶者居住権の土地部分の価額：</span><span>{(results.landUse || 0).toLocaleString()} 円</span></div>
               </div>
             </div>
-            {/* 土地・建物の価額 */}
-            <div className="bg-white p-6 rounded-xl shadow col-span-1 md:col-span-2 mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex flex-col items-start">
-                <h4 className="font-semibold text-lg mb-2 text-green-700">建物価額</h4>
-                <p className="text-xl font-bold text-green-600">{(results.buildingTaxValue || 0).toLocaleString()} 円</p>
-              </div>
-              <div className="flex flex-col items-start">
-                <h4 className="font-semibold text-lg mb-2 text-yellow-700">土地価額</h4>
-                <p className="text-xl font-bold text-yellow-600">{(results.landValue || 0).toLocaleString()} 円</p>
-              </div>
-              <div className="flex flex-col items-start sm:col-span-2 mt-2">
-                <h4 className="font-semibold text-lg mb-2 text-gray-700">土地＋建物合計</h4>
-                <p className="text-xl font-bold text-gray-800">{((results.buildingTaxValue || 0) + (results.landValue || 0)).toLocaleString()} 円</p>
-              </div>
-            </div>
             {/* 詳細情報 */}
             <div className="bg-white p-6 rounded-xl shadow col-span-1 md:col-span-2 mt-4">
               <h3 className="font-semibold text-lg mb-2">詳細情報</h3>
