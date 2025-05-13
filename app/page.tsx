@@ -146,6 +146,9 @@ export default function Home() {
   })() : '';
   const spouseLife = (spouseAge !== '' && form.spouseGender) ? getLifeExpectancy(Number(spouseAge), form.spouseGender) : '';
 
+  // 詳細情報の下にデバッグ用計算過程表示
+  const showDebug = true;
+
   return (
     <main className="min-h-screen p-4 sm:p-8 max-w-2xl md:max-w-3xl mx-auto space-y-10 bg-gradient-to-br from-gray-50 via-white to-gray-100">
       <h1 className="text-2xl font-bold text-gray-800">配偶者居住権評価計算アプリ</h1>
@@ -475,6 +478,29 @@ export default function Home() {
           </div>
         )}
       </section>
+
+      {showDebug && results && (
+        <div className="bg-gray-50 border border-dashed border-gray-300 rounded p-4 mt-6">
+          <h4 className="font-bold text-sm mb-2 text-gray-600">[デバッグ用] 計算過程の中間値</h4>
+          <ul className="text-xs text-gray-700 space-y-1">
+            <li>rentalAreaRatio: {results.rentalAreaRatio}</li>
+            <li>residentialRatio: {results.residentialRatio}</li>
+            <li>residentialArea: {results.residentialArea}</li>
+            <li>buildingTaxValue: {results.buildingTaxValue}</li>
+            <li>baseValue: {results.baseValue}</li>
+            <li>remainingYears: {results.remainingYears}</li>
+            <li>buildingRight: {results.buildingRight}</li>
+            <li>settingBuilding: {results.settingBuilding}</li>
+            <li>landValue: {results.landValue}</li>
+            <li>landUse: {results.landUse}</li>
+            <li>landReduction: {results.landReduction}</li>
+            <li>landOwner: {results.landOwner}</li>
+            <li>spouseRightTotal: {results.spouseRightTotal}</li>
+            <li>remainingAssetsTotal: {results.remainingAssetsTotal}</li>
+            <li>total: {results.total}</li>
+          </ul>
+        </div>
+      )}
     </main>
   );
 }
