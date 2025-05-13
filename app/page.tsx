@@ -435,16 +435,34 @@ export default function Home() {
             <span className="text-sm text-gray-400">必要事項を入力し「計算する」を押してください</span>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
-              <h3 className="text-base font-semibold text-blue-700 mb-2">相続税評価額としての評価額合計</h3>
-              <p className="text-2xl font-bold text-blue-600">{results.remainingAssetsTotal.toLocaleString()} 円</p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-6">
+            {/* 相続税評価額合計 */}
+            <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500 flex flex-col items-start min-w-0">
+              <h3 className="text-base font-semibold text-blue-700 mb-2 whitespace-nowrap">相続税評価額としての評価額合計</h3>
+              <p className="text-2xl font-bold text-blue-600 break-words">{results.remainingAssetsTotal.toLocaleString()} 円</p>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500">
-              <h3 className="text-base font-semibold text-purple-700 mb-2">配偶者居住権として引かれる価額</h3>
-              <p className="text-2xl font-bold text-purple-600">{results.spouseRightTotal.toLocaleString()} 円</p>
+            {/* 配偶者居住権控除額 */}
+            <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500 flex flex-col items-start min-w-0">
+              <h3 className="text-base font-semibold text-purple-700 mb-2 whitespace-nowrap">配偶者居住権として引かれる価額</h3>
+              <p className="text-2xl font-bold text-purple-600 break-words">{results.spouseRightTotal.toLocaleString()} 円</p>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow col-span-2 mt-4">
+            {/* 土地・建物の価額 */}
+            <div className="bg-white p-6 rounded-xl shadow col-span-1 md:col-span-2 mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-col items-start">
+                <h4 className="font-semibold text-lg mb-2 text-green-700">建物価額</h4>
+                <p className="text-xl font-bold text-green-600">{(results.buildingTaxValue || 0).toLocaleString()} 円</p>
+              </div>
+              <div className="flex flex-col items-start">
+                <h4 className="font-semibold text-lg mb-2 text-yellow-700">土地価額</h4>
+                <p className="text-xl font-bold text-yellow-600">{(results.landValue || 0).toLocaleString()} 円</p>
+              </div>
+              <div className="flex flex-col items-start sm:col-span-2 mt-2">
+                <h4 className="font-semibold text-lg mb-2 text-gray-700">土地＋建物合計</h4>
+                <p className="text-xl font-bold text-gray-800">{((results.buildingTaxValue || 0) + (results.landValue || 0)).toLocaleString()} 円</p>
+              </div>
+            </div>
+            {/* 詳細情報 */}
+            <div className="bg-white p-6 rounded-xl shadow col-span-1 md:col-span-2 mt-4">
               <h3 className="font-semibold text-lg mb-2">詳細情報</h3>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700 text-sm">
                 <li>配偶者年齢：{results.spouseAge || 0} 歳</li>
