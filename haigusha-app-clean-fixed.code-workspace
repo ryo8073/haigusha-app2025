@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../haigusha-app-shared"
+		},
+		{
+			"path": "../../0_OpenManus"
+		},
+		{
+			"path": "../../new_openmanus_project"
+		}
+	],
+	"settings": {}
+}
