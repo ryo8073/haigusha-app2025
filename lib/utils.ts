@@ -65,9 +65,13 @@ function calcAge(birthday: string, referenceDate: string): number {
 }
 
 function calcElapsedYears(start: string, end: string): number {
+  // Excel: =ROUND(ROUND(DATEDIF(新築年月日,遺産分割日,"M")-1,0)/12,0)
   const d1 = new Date(start);
   const d2 = new Date(end);
-  return Math.floor((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+  // 月数差
+  const months = (d2.getFullYear() - d1.getFullYear()) * 12 + (d2.getMonth() - d1.getMonth());
+  // Excel式に合わせて-1して四捨五入、さらに12で割って四捨五入
+  return Math.round(Math.round(months - 1) / 12);
 }
 
 export function calculateResults(form: any) {
