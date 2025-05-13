@@ -152,8 +152,8 @@ export function calculateResults(form: any) {
   // 評価減の額 = 土地評価額 * (借地権割合 * 0.3) * 賃貸面積割合 * 入居率 
   const landReduction = Math.round(landValue * rentalLandRatio * rentalAreaRatio * occupancyRate);
 
-  // 土地所有権の価額 = 土地評価額 - 評価減の額 - 敷地利用権
-  const landOwner = Math.round(landValue * lowerOwnershipRatio / 100 - landReduction - landUse);
+  // 土地所有権の価額 = [土地評価額 - 評価減の額] * 土地持分割合 - 敷地利用権
+  const landOwner = Math.round((landValue - landReduction) * (landOwnershipRatio / 100) - landUse);
 
 
   // 配偶者居住権等の価額の合計
