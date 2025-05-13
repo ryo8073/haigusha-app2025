@@ -440,11 +440,19 @@ export default function Home() {
             <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500 flex flex-col items-start min-w-0">
               <h3 className="text-base font-semibold text-blue-700 mb-2 whitespace-nowrap">相続税評価額としての評価額合計</h3>
               <p className="text-2xl font-bold text-blue-600 break-words">{results.remainingAssetsTotal.toLocaleString()} 円</p>
+              <div className="mt-3 w-full text-sm text-gray-700 space-y-1">
+                <div className="flex flex-row justify-between w-full"><span>相続税評価部分の建物の価額：</span><span>{(results.settingBuilding || 0).toLocaleString()} 円</span></div>
+                <div className="flex flex-row justify-between w-full"><span>相続税評価部分の土地の価額：</span><span>{(results.landOwner || 0).toLocaleString()} 円</span></div>
+              </div>
             </div>
             {/* 配偶者居住権控除額 */}
             <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500 flex flex-col items-start min-w-0">
               <h3 className="text-base font-semibold text-purple-700 mb-2 whitespace-nowrap">配偶者居住権として引かれる価額</h3>
               <p className="text-2xl font-bold text-purple-600 break-words">{results.spouseRightTotal.toLocaleString()} 円</p>
+              <div className="mt-3 w-full text-sm text-gray-700 space-y-1">
+                <div className="flex flex-row justify-between w-full"><span>配偶者居住権の建物部分の価額：</span><span>{(results.buildingRight || 0).toLocaleString()} 円</span></div>
+                <div className="flex flex-row justify-between w-full"><span>配偶者居住権の土地部分の価額：</span><span>{(results.landUse || 0).toLocaleString()} 円</span></div>
+              </div>
             </div>
             {/* 土地・建物の価額 */}
             <div className="bg-white p-6 rounded-xl shadow col-span-1 md:col-span-2 mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
