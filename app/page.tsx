@@ -197,6 +197,7 @@ export default function Home() {
               <label className="block text-sm font-medium text-gray-700">建物固定資産税評価額 (円)</label>
               <input
                 type="text"
+                inputMode="numeric"
                 name="buildingValue"
                 value={formatNumberWithCommas(displayValues.buildingValue)}
                 onChange={handleChange}
@@ -207,6 +208,7 @@ export default function Home() {
               <label className="block text-sm font-medium text-gray-700">建物延床面積 (㎡)</label>
               <input
                 type="text"
+                inputMode="decimal"
                 name="buildingArea"
                 value={displayValues.buildingArea}
                 onChange={handleChange}
@@ -222,6 +224,7 @@ export default function Home() {
               <label className="block text-sm font-medium text-gray-700">賃貸部分面積 (㎡)</label>
               <input
                 type="text"
+                inputMode="decimal"
                 name="rentalArea"
                 value={displayValues.rentalArea}
                 onChange={handleChange}
@@ -234,6 +237,7 @@ export default function Home() {
               <label className="block text-sm font-medium text-gray-700">賃貸入居率 (%) <span className="text-sm text-gray-500">※相続開始日時点</span></label>
               <input
                 type="number"
+                inputMode="decimal"
                 name="rentalRatio"
                 value={form.rentalRatio}
                 onChange={handleChange}
@@ -247,6 +251,7 @@ export default function Home() {
               <label className="block text-sm font-medium text-gray-700">被相続人の建物持分割合 (%)</label>
               <input
                 type="number"
+                inputMode="decimal"
                 name="buildingOwnershipRatio"
                 value={form.buildingOwnershipRatio}
                 onChange={handleChange}
@@ -267,6 +272,7 @@ export default function Home() {
               <label className="block text-sm font-medium text-gray-700">土地面積 (㎡)</label>
               <input
                 type="text"
+                inputMode="decimal"
                 name="landArea"
                 value={displayValues.landArea}
                 onChange={handleChange}
@@ -279,6 +285,7 @@ export default function Home() {
               <label className="block text-sm font-medium text-gray-700">路線価 (円/㎡)</label>
               <input
                 type="text"
+                inputMode="numeric"
                 name="roadPrice"
                 value={formatNumberWithCommas(displayValues.roadPrice)}
                 onChange={handleChange}
@@ -320,6 +327,7 @@ export default function Home() {
               <label className="block text-sm font-medium text-gray-700">土地補正率 (%)</label>
               <input
                 type="number"
+                inputMode="decimal"
                 name="landCorrection"
                 value={form.landCorrection}
                 onChange={handleChange}
@@ -336,6 +344,7 @@ export default function Home() {
               <label className="block text-sm font-medium text-gray-700">被相続人の土地持分割合 (%)</label>
               <input
                 type="number"
+                inputMode="decimal"
                 name="landOwnershipRatio"
                 value={form.landOwnershipRatio}
                 onChange={handleChange}
