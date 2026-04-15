@@ -29,9 +29,11 @@
     ]
   },
   "include": [
-    "app",
-    "life_expectancy.ts",
-    "utils.ts",
+    "next-env.d.ts",
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "lib/**/*.ts",
+    "config/**/*.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": [
